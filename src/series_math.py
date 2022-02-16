@@ -1,4 +1,3 @@
-from unittest import result
 import numpy as np
 import sys
 from beziers import *
@@ -26,5 +25,35 @@ def get_coefficients(elements:dict, vector_count:int, samples:int = 10000):
     return result
 
 def export_to_function_pack(origin:tuple, scale:float, constants:dict):
+    if len(origin) != 3 or scale == 0:
+        return
+
+    #real freq = freq / 10, so it won't be dizzy
+    #minecraft RoX = clockwise, so frep -1 would be ^^^r~0.5555555
+    init_func = []
+    play_func = []
+    init_func.append(f"summon armor_stand \"{previous_name}\" {origin[0]} {origin[1]} {origin[2]}")
     for freq, constant in constants.items():
-        pass
+        if freq == 0:
+            previous_name = "origin"
+        else:
+            #freq sequence: [0, -1, 1, -2, 2...]
+            previous_name = str(-freq) if abs(freq) == freq else str(freq - 1)
+
+        radius = abs(constant)
+        angle = np.angle(constant, deg=True)
+        
+        init_func.append(f"summon armor_stand \"{previous_name}\" {origin[0]} {origin[1]} {origin[2]}")
+        init_func.append(f"execute @e[name=\"{previous_name}\"] ^^^{radius}~{angle}")
+        play_func.append(f"execute @e[name=\"{previous_name}\"] ^^^{radius}~{angle}")
+
+    with open("init.mcfunction", "w") as file:
+        for func in init_func:
+            file.write(func + '\n')
+
+    with open("play.mcfunction", "w") as file:
+        for func in play_func:
+            file.write(func + '\n')
+
+        
+    
