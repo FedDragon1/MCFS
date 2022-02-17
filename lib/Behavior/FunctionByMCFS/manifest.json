@@ -1,0 +1,18 @@
+﻿{
+    "header": {
+        "description": "由 MCFS 生成",
+        "name": "Demo 函数包",
+        "uuid": "b8831548-3d39-1207-9572-916d1b1874ef",
+        "version": [0, 0, 1],
+        "min_engine_version": [1, 2, 6]
+    },
+    "modules": [
+        {
+            "description": "Demo",
+            "type": "data",
+            "uuid": "ae8f5461-156d-4cd8-8234-86d7adeee8bc",
+            "version": [0, 0, 1]
+        }
+    ],
+    "format_version": 1
+}

@@ -3,6 +3,7 @@ from series_math import*
 from xml.dom import minidom
 from svg.path import parse_path
 from svg.path.path import *
+import os
 
 #Read Svg File
 doc = minidom.parse("../TestSVGs/EighthNote.svg")
@@ -56,4 +57,5 @@ for index, key in enumerate(elements):
 del elements
 print(elements_proportion.keys())
 
-print(get_coefficients(elements_proportion, 11))
+coefficients = get_coefficients(elements_proportion, 101)
+export_to_function_pack((0,-60,0), 1, coefficients, path="C:\\Users\\FedeleWu\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\minecraftWorlds\\43cMYrbQAQA=")
