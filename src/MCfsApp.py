@@ -81,6 +81,7 @@ class MainLayout(BoxLayout):
             widget.background_color = (1, 0.6, 0.6)
     
 class MCfsApp(App):
-    pass
+    def build(self):
+        self.icon = "../lib/images/icon.png"
 
 MCfsApp().run()
