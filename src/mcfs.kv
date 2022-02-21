@@ -27,7 +27,8 @@ MainLayout:
             text: "SVG 文件路径："
             size_hint: 0.2, 1
         TextInput:
-            text: root.svg_path
+            id: svg
+            text: ""
             padding: "13dp"
             multiline: False
             font_name: "../lib/fonts/msyh.ttc"
@@ -35,6 +36,9 @@ MainLayout:
             size_hint: 0.8, None
             height: "60dp"
             pos_hint: {"center_x":0.5, "center_y":0.5}
+            on_text_validate: root.svg_path_validate(self)
+            background_color: (.8,.8,.8)
+            cursor_color: (.1, .1, .1)
     BoxLayout:
         padding: "20dp"
         size_hint: 1, 0.5
@@ -44,7 +48,8 @@ MainLayout:
             text: "世界路径："
             size_hint: 0.2, 1
         TextInput:
-            text: root.world_path
+            id: world
+            text: ""
             padding: "13dp"
             multiline: False
             font_name: "../lib/fonts/msyh.ttc"
@@ -52,6 +57,9 @@ MainLayout:
             size_hint: 0.8, None
             height: "60dp"
             pos_hint: {"center_x":0.5, "center_y":0.5}
+            on_text_validate: root.world_path_validate(self)
+            background_color: (.8,.8,.8)
+            cursor_color: (.1, .1, .1)
     BoxLayout:
         padding: "20dp"
         size_hint: 1, 1
@@ -65,7 +73,8 @@ MainLayout:
                 size_hint: 0.2, 1.5
                 pos_hint: {"center_x":0.5}
             TextInput:
-                text: root.scale_factor
+                id: scale
+                text: "1.0"
                 padding: "13dp"
                 multiline: False
                 font_name: "../lib/fonts/msyh.ttc"
@@ -73,6 +82,9 @@ MainLayout:
                 size_hint: 0.8, None
                 height: "60dp"
                 pos_hint: {"center_x":0.5, "center_y":0.1}
+                background_color: (.8,.8,.8)
+                cursor_color: (.1, .1, .1)
+                on_text_validate: root.float_validate(self)
         BoxLayout:
             padding: "10dp"
             orientation: "vertical"
@@ -83,7 +95,8 @@ MainLayout:
                 size_hint: 0.2, 1.5
                 pos_hint: {"center_x":0.5}
             TextInput:
-                text: root.vector_count
+                id: count
+                text: "101"
                 padding: "13dp"
                 multiline: False
                 font_name: "../lib/fonts/msyh.ttc"
@@ -91,10 +104,36 @@ MainLayout:
                 size_hint: 0.8, None
                 height: "60dp"
                 pos_hint: {"center_x":0.5, "center_y":0.1}
+                background_color: (.8,.8,.8)
+                cursor_color: (.1, .1, .1)
+                on_text_validate: root.int_validate(self)
+        BoxLayout:
+            padding: "10dp"
+            orientation: "vertical"
+            Label:
+                font_name: "../lib/fonts/msyh.ttc"
+                font_size: "18dp"
+                text: "原点"
+                size_hint: 0.2, 1.5
+                pos_hint: {"center_x":0.5}
+            TextInput:
+                id: origin
+                text: "0, -60, 0"
+                padding: "13dp"
+                multiline: False
+                font_name: "../lib/fonts/msyh.ttc"
+                font_size: "18dp"
+                size_hint: 0.8, None
+                height: "60dp"
+                pos_hint: {"center_x":0.5, "center_y":0.1}
+                background_color: (.8,.8,.8)
+                cursor_color: (.1, .1, .1)
+                on_text_validate: root.tuple_validate(self)
     Button:
-        
+        background_color: (.7, .7, .7)
         text:"一键生成"
-        on_press: root.generate()
+        on_press: root.generate(self, svg, world, scale, count, origin)
+        on_release: self.background_color = (.7, .7, .7)
         font_name: "../lib/fonts/msyh.ttc"
         font_size: "18dp"
         size_hint: None, None

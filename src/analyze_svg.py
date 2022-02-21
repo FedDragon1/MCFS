@@ -7,16 +7,11 @@ from svg.path.path import *
 
 #Read Svg File
 class SvgIn:
-    def __init__(self, svg_path, scale:float=1):
-        self.error = False
-        try:
-            doc = minidom.parse(svg_path)
-        except FileNotFoundError:
-            self.error = True
-        if not self.error:
-            self.path_strings = [path.getAttribute('d') for path
-                            in doc.getElementsByTagName('path')]
-            doc.unlink()
+    def __init__(self, svg_path:str, scale:float=1):
+        doc = minidom.parse(svg_path)
+        self.path_strings = [path.getAttribute('d') for path
+                        in doc.getElementsByTagName('path')]
+        doc.unlink()
         self.scale = scale
 
     def get_circumference(self):
@@ -56,18 +51,18 @@ class SvgIn:
         #Change length in elements into end proportion
         #i.e. 2 elements both with 50% circumference will end up be {0.5:ele1, 1.0:ele2}
         elements_proportion = {}
-        print(self.elements.keys())
-        print(list(self.elements))
+        #print(self.elements.keys())
+        #print(list(self.elements))
         for index, key in enumerate(self.elements):
             new_key = key / self.circumference
             if index:
-                print(f"index: {index}, before: {list(elements_proportion)[index - 1]}")
+                #print(f"index: {index}, before: {list(elements_proportion)[index - 1]}")
                 new_key += list(elements_proportion)[index - 1]    #key set
             elements_proportion[new_key] = self.elements[key]
         self.elements_proportion = elements_proportion
-        print(elements_proportion.keys())
+        #print(elements_proportion.keys())
 
-    def export(self, _path:str, vectors:int):
+    def export(self, _path:str, vectors:int, origin:tuple[float]=(0,-60,0)):
         self.coefficient = get_coefficients(self.elements_proportion, vectors)
-        export_to_function_pack((0,-60,0), self.coefficient, path=_path)
+        export_to_function_pack(origin, self.coefficient, path=_path)
 

@@ -23,7 +23,7 @@ def get_coefficients(elements:dict, vector_count:int, samples:int = 10000):
         riemann_sum = sum([np.exp(-2 * pi * 1j * freq * time_sample) * path_sample for time_sample, path_sample in zip(time_samples, path_samples)]) * dt
         result[freq] = riemann_sum
     result = {key:result[key] for key in sorted(result.keys(), key=abs)}
-    print(result.items())
+    #print(result.items())
     return result
 
 def export_to_function_pack(origin:tuple, coefficients:dict, *, particle:str = "minecraft:endRod", path:str = ".", name:str = "Demo"):
