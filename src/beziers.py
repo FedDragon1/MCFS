@@ -4,7 +4,7 @@ def get_quadratic_coordinate_with_time(t:float, /, *, p0:complex, p1:complex, p2
     if t < 0 or t > 1:
         return
     points = [p0, p1, p2]
-    polynomials = [eval("-t**2 - 2*t + 1"), eval("-2*t**2 + 2*t"), eval("t**2")]
+    polynomials = [eval("(1-t)**2"), eval("2*t*(1-t)"), eval("t**2")]
     return sum([prod * points[index] for index, prod in enumerate(polynomials)])
 
 def get_quadratic_arc_length(n:int = 40, /, *, P0:complex, P1:complex, P2:complex):
@@ -16,7 +16,7 @@ def get_quadratic_arc_length(n:int = 40, /, *, P0:complex, P1:complex, P2:comple
     """
     if n < 1:
         return
-    return sum([abs(get_quadratic_coordinate_with_time((side_count + 1), p0=P0, p1=P1, p2=P2) - get_quadratic_coordinate_with_time((side_count), p0=P0, p1=P1, p2=P2)) for side_count in range(n)])
+    return sum([abs(get_quadratic_coordinate_with_time((side_count + 1) / n, p0=P0, p1=P1, p2=P2) - get_quadratic_coordinate_with_time(side_count / n, p0=P0, p1=P1, p2=P2)) for side_count in range(n)])
 
 
 def get_cubic_coordinate_with_time(t:float, /, *, p0:complex, p1:complex, p2:complex, p3:complex):

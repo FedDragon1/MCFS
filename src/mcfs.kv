@@ -1,0 +1,108 @@
+#:kivy 2.0.0
+MainLayout:
+<MainLayout>:
+    canvas.before:
+        Color:
+            rgba: 0.15, 0.15, 0.15, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation: "vertical"
+    Label:
+        font_name: "../lib/fonts/msyh.ttc"
+        font_size: "34dp"
+        text: "在 MCbe 里添加任何 2D 粒子特效！"
+        size_hint: 1, 0.5
+    RelativeLayout:
+        canvas:
+            Line:
+                points: (dp(50), self.height, self.width - dp(50), self.height)
+        size_hint: 1, 0.1
+    BoxLayout:
+        padding: "20dp"
+        size_hint: 1, 0.5
+        Label:
+            font_name: "../lib/fonts/msyh.ttc"
+            font_size: "18dp"
+            text: "SVG 文件路径："
+            size_hint: 0.2, 1
+        TextInput:
+            text: root.svg_path
+            padding: "13dp"
+            multiline: False
+            font_name: "../lib/fonts/msyh.ttc"
+            font_size: "18dp"
+            size_hint: 0.8, None
+            height: "60dp"
+            pos_hint: {"center_x":0.5, "center_y":0.5}
+    BoxLayout:
+        padding: "20dp"
+        size_hint: 1, 0.5
+        Label:
+            font_name: "../lib/fonts/msyh.ttc"
+            font_size: "18dp"
+            text: "世界路径："
+            size_hint: 0.2, 1
+        TextInput:
+            text: root.world_path
+            padding: "13dp"
+            multiline: False
+            font_name: "../lib/fonts/msyh.ttc"
+            font_size: "18dp"
+            size_hint: 0.8, None
+            height: "60dp"
+            pos_hint: {"center_x":0.5, "center_y":0.5}
+    BoxLayout:
+        padding: "20dp"
+        size_hint: 1, 1
+        BoxLayout:
+            padding: "10dp"
+            orientation: "vertical"
+            Label:
+                font_name: "../lib/fonts/msyh.ttc"
+                font_size: "18dp"
+                text: "缩放倍数"
+                size_hint: 0.2, 1.5
+                pos_hint: {"center_x":0.5}
+            TextInput:
+                text: root.scale_factor
+                padding: "13dp"
+                multiline: False
+                font_name: "../lib/fonts/msyh.ttc"
+                font_size: "18dp"
+                size_hint: 0.8, None
+                height: "60dp"
+                pos_hint: {"center_x":0.5, "center_y":0.1}
+        BoxLayout:
+            padding: "10dp"
+            orientation: "vertical"
+            Label:
+                font_name: "../lib/fonts/msyh.ttc"
+                font_size: "18dp"
+                text: "盔甲架数量"
+                size_hint: 0.2, 1.5
+                pos_hint: {"center_x":0.5}
+            TextInput:
+                text: root.vector_count
+                padding: "13dp"
+                multiline: False
+                font_name: "../lib/fonts/msyh.ttc"
+                font_size: "18dp"
+                size_hint: 0.8, None
+                height: "60dp"
+                pos_hint: {"center_x":0.5, "center_y":0.1}
+    Button:
+        
+        text:"一键生成"
+        on_press: root.generate()
+        font_name: "../lib/fonts/msyh.ttc"
+        font_size: "18dp"
+        size_hint: None, None
+        size: "400dp", "100dp"
+        pos_hint: {"center_x":0.5, "center_y":0.5}
+
+    Label:
+        text: ""
+        size_hint: None, None
+        height: "20dp"
+        

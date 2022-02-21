@@ -26,8 +26,8 @@ def get_coefficients(elements:dict, vector_count:int, samples:int = 10000):
     print(result.items())
     return result
 
-def export_to_function_pack(origin:tuple, scale:float, coefficients:dict, *, particle:str = "minecraft:endRod", path:str = ".", name:str = "Demo"):
-    if len(origin) != 3 or scale == 0:
+def export_to_function_pack(origin:tuple, coefficients:dict, *, particle:str = "minecraft:endRod", path:str = ".", name:str = "Demo"):
+    if len(origin) != 3:
         return
 
     #real freq = freq / 10, so it won't be dizzy
