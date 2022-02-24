@@ -1,11 +1,5 @@
 from svg.path.path import *
 
-ERROR = 1e-12
-MIN_DEPTH = 5
-
-def get_arc_length(arc:Arc, start:complex, end:complex, start_point:complex, end_point:complex):
-    pass
-
 def get_quadratic_coordinate_with_time(t:float, /, *, p0:complex, p1:complex, p2:complex):
     if t < 0 or t > 1:
         return

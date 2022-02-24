@@ -1,4 +1,3 @@
-from typing import Union
 from beziers import *
 from series_math import*
 from xml.dom import minidom
