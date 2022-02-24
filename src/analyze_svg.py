@@ -39,10 +39,11 @@ class SvgIn:
                     circumference += length
                     elements[length] = QuadraticBezier((e.start-start)*self.scale, (e.control-start)*self.scale, (e.end-start)*self.scale)
                     #print(f"QuadraticBezier: {e}, Length: {length}px")
-
-                #TODO
                 elif isinstance(e, Arc):
-                    pass
+                    new_arc = Arc((e.start-start)*self.scale, e.radius*self.scale, e.rotation, e.arc, e.sweep, (e.end-start)*self.scale)
+                    length = new_arc.length()
+                    circumference += length
+                    elements[length] = new_arc
                 
         self.circumference = circumference
         self.elements = elements

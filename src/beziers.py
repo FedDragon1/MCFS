@@ -1,5 +1,11 @@
 from svg.path.path import *
 
+ERROR = 1e-12
+MIN_DEPTH = 5
+
+def get_arc_length(arc:Arc, start:complex, end:complex, start_point:complex, end_point:complex):
+    pass
+
 def get_quadratic_coordinate_with_time(t:float, /, *, p0:complex, p1:complex, p2:complex):
     if t < 0 or t > 1:
         return
@@ -69,6 +75,8 @@ def point_from_proportion(t:float, elements:dict):
         return get_quadratic_coordinate_with_time(alpha, p0=element.start, p1=element.control, p2=element.end)
     elif isinstance(element, CubicBezier):
         return get_cubic_coordinate_with_time(alpha, p0=element.start, p1=element.control1, p2=element.control2, p3=element.end)
+    elif isinstance(element, Arc):
+        return element.point(alpha)
     else:
         raise NotImplementedError(f"Element type \"{type(element)}\" is not implemented yet")
     
