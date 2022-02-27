@@ -27,7 +27,7 @@ def get_coefficients(elements:dict, vector_count:int, samples:int = 10000):
     #print(result.items())
     return result
 
-def export_to_function_pack(origin:tuple, coefficients:dict, *, particle:str = "minecraft:endRod", path:str = ".", name:str = "Demo"):
+def export_to_function_pack(origin:tuple[float], coefficients:dict, *, particle:str = "minecraft:endRod", path:str = ".", name:str = "Demo"):
     if len(origin) != 3:
         return
 

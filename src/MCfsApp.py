@@ -20,7 +20,7 @@ class MainLayout(BoxLayout):
             obj = SvgIn(svg.text.replace("\\", "/"), float(factor.text))
             obj.get_circumference()
             obj.c2p()
-            obj.export(world.text.replace("\\", "/"), int(count.text), origin.text)
+            obj.export(world.text.replace("\\", "/"), int(count.text), origin.text.replace(" ","").split(","))
             widget.text = "生成成功！（点击再次生成）"
         else:
             widget.text = "生成失败！（检查红色区域）"

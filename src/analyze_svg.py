@@ -64,7 +64,7 @@ class SvgIn:
         self.elements_proportion = elements_proportion
         #print(elements_proportion.keys())
 
-    def export(self, _path:str, vectors:int, origin:tuple[float]=(0,-60,0)):
+    def export(self, _path:str, vectors:int, origin:tuple[float]):
         self.coefficient = get_coefficients(self.elements_proportion, vectors)
         export_to_function_pack(origin, self.coefficient, path=_path)
 
