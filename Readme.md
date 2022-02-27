@@ -12,8 +12,8 @@ MCFS is an easy program which converts `.svg` files into Minecraft Bedrock as Fo
 
 MCFS 是一个简单的 Python 项目。可以将 `.svg` 文件以傅里叶级数的形式导入我的世界基岩版。
 
-> Only `path` tag in `.svg` files could be transferred. Also, `arc` attribute is not supported.
+> Only `path` tag in `.svg` files could be transferred.
 >
-> 目前只有 `path` 标签内的命令可以转换。MCFS 不支持 `a` 指令（弧线）
+> 目前只有 `path` 标签内的命令可以转换。
 
 ## 
