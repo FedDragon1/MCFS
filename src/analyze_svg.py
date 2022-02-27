@@ -1,3 +1,5 @@
+# !/usr/bin/python
+# -*- coding: UTF-8 -*-
 from beziers import *
 from series_math import*
 from xml.dom import minidom

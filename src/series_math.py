@@ -1,6 +1,7 @@
+# !/usr/bin/python
+# -*- coding: UTF-8 -*-
 import numpy as np
 import sys
-import uuid
 import shutil
 from beziers import *
 from math import pi

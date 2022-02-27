@@ -1,3 +1,5 @@
+# !/usr/bin/python
+# -*- coding: UTF-8 -*-
 from svg.path.path import *
 
 def get_quadratic_coordinate_with_time(t:float, /, *, p0:complex, p1:complex, p2:complex):

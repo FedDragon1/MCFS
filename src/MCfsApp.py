@@ -1,3 +1,5 @@
+# !/usr/bin/python
+# -*- coding: UTF-8 -*-
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from os.path import isfile, isdir
